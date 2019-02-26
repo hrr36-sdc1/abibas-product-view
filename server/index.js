@@ -1,18 +1,18 @@
-import express, { static, json } from 'express';
-import { Shoes, Images } from '../database/index.js';
+const express = require('express');
+const DB = require('../database/index.js');
 
 const app = express();
 const port = 8002;
 
-app.use(static(__dirname + '/../public'));
-app.use(json());
+app.use(express.static(__dirname + '/../public'));
+app.use(express.json());
 
 app.get('/products', (req, res) => {
   let model = req.query.model;
   // console.log(Shoes);
-  Shoes.sync()
+  DB.Shoes.sync()
     .then(()=>{
-      return Shoes.findAll({
+      return DB.Shoes.findAll({
         where: {
           model: model
         }
@@ -26,9 +26,9 @@ app.get('/products', (req, res) => {
 
 app.get('/images', (req, res) => {
   let imageID = req.query.imageID;
-  Images.sync()
+  DB.Images.sync()
     .then(()=>{
-      return Images.findOne({
+      return DB.Images.findOne({
         where: {
           img_id: imageID
         }
@@ -46,4 +46,4 @@ app.listen(port, ()=>{
   console.log(`listening on port ${port}`);
 });
 
-export default app;
+module.exports = app;
