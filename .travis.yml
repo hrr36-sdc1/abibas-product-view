@@ -5,4 +5,4 @@ cache:
   directories:
     - "node_modules"
 env:
-  - DB_HOST=root DB_PW=
+  - DB_HOST=localhost DB_USER=root DB_PW=
