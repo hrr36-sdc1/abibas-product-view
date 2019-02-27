@@ -1,6 +1,6 @@
 const faker = require('faker');
 
-module.exports = data = {
+module.exports.data = {
   shoeLink1: [
     'https://s3.amazonaws.com/fec-abibas/f6937e328b7c44ef886ea97501027a8f_9366.jpg',
     'https://s3.amazonaws.com/fec-abibas/e50a6e3482a24d789c32a7af00eb1e98_9366.jpg',
@@ -25,7 +25,7 @@ module.exports = data = {
     'https://s3.amazonaws.com/fec-abibas/061ba858e69744459f8ba7af00f3de80_9366.jpg'
   ],
   product1: {
-    color: 'Grey, Grey, Grey',
+    colors: 'Grey, Grey, Grey',
     type: "Men's Running",
     model: "UltraBoost All Terrain Shoes",
     sizes: "6, 6.5, 7, 8, 8.5, 10, 14, 14.5, 16",

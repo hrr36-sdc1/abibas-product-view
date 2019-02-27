@@ -1,35 +1,37 @@
 /* eslint-disable camelcase */
-/* eslint linebreak-style: ["error", "windows"] */
+/*eslint linebreak-style: ["error", "windows"]*/
+
 const express = require('express');
 const DB = require('../database/index.js');
 
 const app = express();
 
-const port = 8002;
-
 app.use(express.static(`${__dirname  }/../public`));
 app.use(express.json());
 
 app.get('/products', (req, res) => {
-  const { model } = req.query.model;
+  const { model } = req.query;
   // console.log(Shoes);
   DB.Shoes.sync()
     .then(() => DB.Shoes.findAll({
-      where: { model },
+      where: {
+        model: model
+      }
     }))
     .then((data) => {
-    // console.log(data);
+      if (data.length === 0) {
+        res.sendStatus(204);
+      }
       res.json(data);
     });
 });
 
 app.post('/products', (req, res) => {
   const product = req.body;
-
   DB.Shoes.sync()
     .then(() => {
       DB.Shoes.create({
-        colors: product.color,
+        colors: product.colors,
         type: product.type,
         model: product.model,
         sizes: product.sizes,
@@ -64,12 +66,12 @@ app.delete('/products/:productId', (req, res) => {
 });
 
 app.get('/images', (req, res) => {
-  const { imageID } = req.query.imageID;
+  const imageID = req.query.imageID;
   DB.Images.sync()
     .then(() => DB.Images.findOne({
       where: {
         img_id: imageID,
-      },
+      }
     }))
     .then((data) => {
     // console.log(data.links.split('***'));
@@ -109,10 +111,6 @@ app.delete('/images/:imageId', (req, res) => {
         .then(data => res.json(data));
     })
     .catch(err => console.log(err));
-});
-
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
 });
 
 module.exports = app;
