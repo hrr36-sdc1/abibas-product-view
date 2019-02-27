@@ -4,3 +4,9 @@ node_js:
 cache:
   directories:
     - "node_modules"
+env:
+  - DB_HOST=localhost DB_USER=root DB_PW=
+services:
+  - mysql
+before_script:
+  - npm run db:setup

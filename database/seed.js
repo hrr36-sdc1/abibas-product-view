@@ -1,15 +1,18 @@
+/* eslint-disable linebreak-style */
 const Sequelize = require('sequelize');
-const config = require('../config.js');
-const Data = require('./fakeData.js');
+require('dotenv').config();
+const { data } = require('./fakeData.js');
 const faker = require('faker');
 
-const sequelize = new Sequelize('', 'root', config.pw, {
+const dbTableName = process.env.NODE_ENV === 'prod' ? 'Products' : 'ProductsTest';
+
+const sequelize = new Sequelize('', process.env.DB_USER, process.env.DB_PW, {
   host: 'localhost',
   dialect: 'mysql',
 });
 
-sequelize.query('CREATE DATABASE Products').then(()=> {
-  const db = new Sequelize('Products', 'root', config.pw, {
+sequelize.query(`CREATE DATABASE ${dbTableName}`).then(()=> {
+  const db = new Sequelize(dbTableName, process.env.DB_USER, process.env.DB_PW, {
     host: 'localhost',
     dialect: 'mysql'
     }
@@ -39,42 +42,42 @@ sequelize.query('CREATE DATABASE Products').then(()=> {
 
   Images.sync()
     .then(() => {
-      Images.create({links: Data.shoeLink1.join('***')});
-      Images.create({links: Data.shoeLink2.join('***')});
-      Images.create({links: Data.shoeLink3.join('***')});
+      Images.create({links: data.shoeLink1.join('***')});
+      Images.create({links: data.shoeLink2.join('***')});
+      Images.create({links: data.shoeLink3.join('***')});
     })
     .then(()=>{
       Shoes.sync()
       .then(()=>{
         Shoes.create({
-          colors: Data.product1.color,
-          type: Data.product1.type,
-          model: Data.product1.model,
-          sizes: Data.product1.sizes,
-          price: Data.product1.price,
-          image_ID: Data.product1.image_ID,
-          review_count: Data.product1.review_count,
-          avg_stars: Data.product1.avg_stars
+          colors: data.product1.color,
+          type: data.product1.type,
+          model: data.product1.model,
+          sizes: data.product1.sizes,
+          price: data.product1.price,
+          image_ID: data.product1.image_ID,
+          review_count: data.product1.review_count,
+          avg_stars: data.product1.avg_stars
         });
         Shoes.create({
-          colors: Data.product2.color,
-          type: Data.product2.type,
-          model: Data.product2.model,
-          sizes: Data.product2.sizes,
-          price: Data.product2.price,
-          image_ID: Data.product2.image_ID,
-          review_count: Data.product2.review_count,
-          avg_stars: Data.product2.avg_stars
+          colors: data.product2.color,
+          type: data.product2.type,
+          model: data.product2.model,
+          sizes: data.product2.sizes,
+          price: data.product2.price,
+          image_ID: data.product2.image_ID,
+          review_count: data.product2.review_count,
+          avg_stars: data.product2.avg_stars
         });
         Shoes.create({
-          colors: Data.product3.color,
-          type: Data.product3.type,
-          model: Data.product3.model,
-          sizes: Data.product3.sizes,
-          price: Data.product3.price,
-          image_ID: Data.product3.image_ID,
-          review_count: Data.product3.review_count,
-          avg_stars: Data.product3.avg_stars
+          colors: data.product3.color,
+          type: data.product3.type,
+          model: data.product3.model,
+          sizes: data.product3.sizes,
+          price: data.product3.price,
+          image_ID: data.product3.image_ID,
+          review_count: data.product3.review_count,
+          avg_stars: data.product3.avg_stars
         });
         for (let i = 0; i < 100; i++){
           Shoes.create({
@@ -91,6 +94,8 @@ sequelize.query('CREATE DATABASE Products').then(()=> {
       })
 
     })
-
 })
+
+setTimeout(() => process.exit(0), 2500);
+
 
