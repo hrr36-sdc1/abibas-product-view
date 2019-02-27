@@ -4,27 +4,24 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/hrr36-sdc1/product-view
+  - https://github.com/hrr36-sdc1/bill-product-details
 
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
 1. [Development](#development)
 
 ## Usage
 
-> Some usage instructions
+API Endpoints:
+GET / POST
+- /products
+- /images
 
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
+PUT / DELETE
+- /products/:productId
+- /images/:imageId
 
 ## Development
 
@@ -33,7 +30,6 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
 ```
 
