@@ -94,8 +94,8 @@ sequelize.query(`CREATE DATABASE ${dbTableName}`).then(()=> {
       })
 
     })
-
 })
 
-process.exit(0);
+setTimeout(() => process.exit(0), 2500);
+
 
