@@ -9,4 +9,4 @@ env:
 services:
   - mysql
 before_script:
-  - npm run db:setup
+  - npm run test-db:setup
