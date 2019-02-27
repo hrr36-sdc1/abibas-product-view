@@ -11,7 +11,7 @@
     "start": "nodemon server/app.js",
     "react-dev": "webpack -d --watch",
     "db:setup": "node database/seed.js",
-    "test": "jest --watchAll"
+    "test": "NODE_ENV=test jest --forceExit"
   },
   "dependencies": {
     "babel-core": "^7.0.0-bridge.0",

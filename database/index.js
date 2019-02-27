@@ -2,7 +2,9 @@
 const Sequelize = require('sequelize');
 const config = require('../config.js');
 
-const db = new Sequelize('Products', 'root', config.pw, {
+const dbTableName = process.env.NODE_ENV === 'prod' ? 'Products' : 'ProductsTest';
+
+const db = new Sequelize(dbTableName, config.user, config.pw, {
   host: 'localhost',
   dialect: 'mysql'
 }
