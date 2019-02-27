@@ -2,7 +2,6 @@
 const faker = require('faker');
 const fs = require('fs');
 const path = require('path');
-const Stream = require('stream');
 
 exports.constructCsvLine = (fields) => {
   const encodedFields = [];
