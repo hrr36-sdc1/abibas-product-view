@@ -1,12 +1,12 @@
 /* eslint-disable camelcase */
-/*eslint linebreak-style: ["error", "windows"]*/
+/* eslint linebreak-style: ["error", "windows"] */
 
 const express = require('express');
 const DB = require('../database/index.js');
 
 const app = express();
 
-app.use(express.static(`${__dirname  }/../public`));
+app.use(express.static(`${__dirname}/../public`));
 app.use(express.json());
 
 app.get('/products', (req, res) => {
@@ -15,8 +15,8 @@ app.get('/products', (req, res) => {
   DB.Shoes.sync()
     .then(() => DB.Shoes.findAll({
       where: {
-        model: model
-      }
+        model,
+      },
     }))
     .then((data) => {
       if (data.length === 0) {
@@ -66,12 +66,12 @@ app.delete('/products/:productId', (req, res) => {
 });
 
 app.get('/images', (req, res) => {
-  const imageID = req.query.imageID;
+  const { imageID } = req.query;
   DB.Images.sync()
     .then(() => DB.Images.findOne({
       where: {
         img_id: imageID,
-      }
+      },
     }))
     .then((data) => {
     // console.log(data.links.split('***'));
