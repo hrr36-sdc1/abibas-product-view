@@ -97,3 +97,5 @@ sequelize.query(`CREATE DATABASE ${dbTableName}`).then(()=> {
 
 })
 
+process.exit(0);
+
