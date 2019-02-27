@@ -1,17 +1,18 @@
+/* eslint-disable linebreak-style */
 const Sequelize = require('sequelize');
-const config = require('../config.js');
+require('dotenv').config();
 const { data } = require('./fakeData.js');
 const faker = require('faker');
 
 const dbTableName = process.env.NODE_ENV === 'prod' ? 'Products' : 'ProductsTest';
 
-const sequelize = new Sequelize('', config.user, config.pw, {
+const sequelize = new Sequelize('', process.env.DB_USER, process.env.DB_PW, {
   host: 'localhost',
   dialect: 'mysql',
 });
 
 sequelize.query(`CREATE DATABASE ${dbTableName}`).then(()=> {
-  const db = new Sequelize(dbTableName, config.user, config.pw, {
+  const db = new Sequelize(dbTableName, process.env.DB_USER, process.env.DB_PW, {
     host: 'localhost',
     dialect: 'mysql'
     }
