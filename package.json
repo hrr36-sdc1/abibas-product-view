@@ -10,7 +10,8 @@
   "scripts": {
     "start": "nodemon server/app.js",
     "react-dev": "webpack -d --watch",
-    "db:setup": "node database/seed.js",
+    "prod-db:setup": "NODE_ENV=prod node database/seed.js",
+    "dev-db:setup": "NODE_ENV=test node database/seed.js",
     "test": "NODE_ENV=test jest --forceExit"
   },
   "dependencies": {
