@@ -4,3 +4,5 @@ node_js:
 cache:
   directories:
     - "node_modules"
+env:
+  - DB_HOST=root DB_PW=
