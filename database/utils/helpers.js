@@ -44,7 +44,7 @@ exports.generateProductData = (N) => {
       price: Math.round(100 * (Math.random() * 100 + 100)) / 100,
       image_ID: (Math.floor(Math.random() * 3)) + 1,
       review_count: (Math.floor(Math.random()) * 130) + 20,
-      avg_stars: Math.round(100 * 2 * Math.random() + 3) / 100,
+      avg_stars: Math.round(100 * (2 * Math.random() + 3)) / 100,
     });
   }
   return storage;
