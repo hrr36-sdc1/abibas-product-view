@@ -59,27 +59,25 @@ exports.generateProductData = (N) => {
 exports.generateProductFile = (N, n, ID) => {
   // N = number of records, n = number of files
   const dirname = path.resolve();
-  for (let k = 0; k < n; k += 1) {
-    const outputPath = path.join(dirname, `/seeds/file${ID}.csv`);
-    const writeStream = fs.createWriteStream(outputPath, { encoding: 'utf8' });
+  const outputPath = path.join(dirname, `/seeds/file${ID}.csv`);
+  const writeStream = fs.createWriteStream(outputPath, { encoding: 'utf8' });
 
-    // write headers, generate products, and write those to file
-    const headers = ['colors', 'type', 'model', 'sizes', 'price', 'image_id', 'review_count', 'avg_stars'];
+  // write headers, generate products, and write those to file
+  const headers = ['colors', 'type', 'model', 'sizes', 'price', 'image_id', 'review_count', 'avg_stars'];
 
-    writeStream.write(`${exports.constructCsvLine(headers)}\n`);
-    const storage = exports.generateProductData(N);
-    for (let i = 0; i < (storage.length / n); i += 1) {
-      const entry = storage[i];
-      const line = [];
-      // only get fields that we have in our headers:
-      for (let j = 0; j < headers.length; j += 1) {
-        const key = headers[j];
-        let field = entry[key];
-        if (field === undefined) field = '';
-        line.push(field);
-      }
-      writeStream.write(`${exports.constructCsvLine(line)}\n`);
+  writeStream.write(`${exports.constructCsvLine(headers)}\n`);
+  const storage = exports.generateProductData(N);
+  for (let i = 0; i < (storage.length); i += 1) {
+    const entry = storage[i];
+    const line = [];
+    // only get fields that we have in our headers:
+    for (let j = 0; j < headers.length; j += 1) {
+      const key = headers[j];
+      let field = entry[key];
+      if (field === undefined) field = '';
+      line.push(field);
     }
+    writeStream.write(`${exports.constructCsvLine(line)}\n`);
   }
 };
 // THOUGHTS:
@@ -102,17 +100,15 @@ exports.generateImageData = (N) => {
 exports.generateImageFile = (N, n, ID) => {
   // N = number of records, n = number of files
   const dirname = path.resolve();
-  for (let k = 0; k < n; k += 1) {
-    const outputPath = path.join(dirname, `/seeds/imagefile${ID}.csv`);
-    const writeStream = fs.createWriteStream(outputPath, { encoding: 'utf8' });
+  const outputPath = path.join(dirname, `/seeds/imagefile${ID}.csv`);
+  const writeStream = fs.createWriteStream(outputPath, { encoding: 'utf8' });
 
-    // write headers, generate images, and write those to file
-    const headers = ['links'];
-    writeStream.write(`${exports.constructCsvLine(headers)}\n`);
-    const storage = exports.generateImageData(N);
-    for (let i = 0; i < (storage.length / n); i += 1) {
-      const entry = storage[i].join('***');
-      writeStream.write(`${entry}\n`);
-    }
+  // write headers, generate images, and write those to file
+  const headers = ['links'];
+  writeStream.write(`${exports.constructCsvLine(headers)}\n`);
+  const storage = exports.generateImageData(N);
+  for (let i = 0; i < (storage.length); i += 1) {
+    const entry = storage[i].join('***');
+    writeStream.write(`${entry}\n`);
   }
 };
