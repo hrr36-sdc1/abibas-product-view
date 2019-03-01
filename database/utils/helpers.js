@@ -20,7 +20,7 @@ exports.constructCsvLine = (fields) => {
   return encodedFields.join(separator);
 };
 
-exports.generateProductData = (N) => {
+exports.generateProductData = (N, n) => {
   // generate random properties using faker
   const colors = [];
   const models = ['UltraBoost All Terrain Shoes'];
@@ -38,6 +38,7 @@ exports.generateProductData = (N) => {
   for (let i = 0; i < N; i += 1) {
     randFloor = Math.floor(Math.random() * colors.length);
     storage.push({
+      id: n * N + i,
       colors: colors[randFloor],
       type: types[randFloor],
       model: models[randFloor],
@@ -63,10 +64,10 @@ exports.generateProductFile = (N, n, ID) => {
   const writeStream = fs.createWriteStream(outputPath, { encoding: 'utf8' });
 
   // write headers, generate products, and write those to file
-  const headers = ['colors', 'type', 'model', 'sizes', 'price', 'image_id', 'review_count', 'avg_stars'];
+  const headers = ['id', 'colors', 'type', 'model', 'sizes', 'price', 'image_id', 'review_count', 'avg_stars'];
 
   writeStream.write(`${exports.constructCsvLine(headers)}\n`);
-  const storage = exports.generateProductData(N);
+  const storage = exports.generateProductData(N, n);
   for (let i = 0; i < (storage.length); i += 1) {
     const entry = storage[i];
     const line = [];
@@ -88,11 +89,11 @@ exports.generateProductFile = (N, n, ID) => {
 // put them in the bash gen and bash run seed scripts
 // try writing a join query to gauge speed
 
-exports.generateImageData = (N) => {
+exports.generateImageData = (N, n) => {
   const storage = [];
   for (let i = 0; i < N; i += 1) {
     const rand = 1 + Math.floor(Math.random() * 3);
-    storage.push(data[`shoeLink${rand}`]);
+    storage.push(n * N + i + ',' + data[`shoeLink${rand}`].join('***'));
   }
   return storage;
 };
@@ -104,11 +105,11 @@ exports.generateImageFile = (N, n, ID) => {
   const writeStream = fs.createWriteStream(outputPath, { encoding: 'utf8' });
 
   // write headers, generate images, and write those to file
-  const headers = ['links'];
+  const headers = ['id', 'links'];
   writeStream.write(`${exports.constructCsvLine(headers)}\n`);
-  const storage = exports.generateImageData(N);
+  const storage = exports.generateImageData(N, n);
   for (let i = 0; i < (storage.length); i += 1) {
-    const entry = storage[i].join('***');
+    const entry = storage[i];
     writeStream.write(`${entry}\n`);
   }
 };
