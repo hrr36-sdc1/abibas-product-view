@@ -3,6 +3,7 @@
 
 start=`date +%s`
 
+# generate data files
 for i in `seq 1 20`;
 do
   ID=$i node ./generate_products.js
@@ -10,6 +11,7 @@ do
   echo image seed $i generated
 done
 
+# load data files into postgres and cassandra
 for i in `seq 1 20`;
 do
   psql -U postgres -d products -c "\copy shoes(id, colors, type, model, sizes, price, image_id, review_count, avg_stars) from program 'head -1000000 ./seeds/file$i.csv' delimiter ',' csv header;"
@@ -19,6 +21,7 @@ do
   echo seed $i loaded
 done
 
+# cleanup
 for i in `seq 1 20`;
 do
   rm ./seeds/file$i.csv
@@ -26,8 +29,10 @@ do
   echo seed $i removed
 done
 
+# cleanup
 rm import*.err*
 
+# log script runtime
 end=`date +%s`
-
 runtime=$((end-start))
+echo $runtime
