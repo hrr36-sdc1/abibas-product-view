@@ -12,4 +12,6 @@ before_script:
   - psql -c 'create database products_test;' -U postgres
   - psql -c 'create database products;' -U postgres
   - knex migrate:latest --env development
+  - knex migrate:latest --env test
   - npm run dev-db:seed
+  - npm run test-db:seed
