@@ -1,6 +1,8 @@
 #!/bin/bash
 #!/usr/bin/env node
 
+cd database/utils/
+
 start=`date +%s`
 
 # generate data files
@@ -36,3 +38,5 @@ rm import*.err*
 end=`date +%s`
 runtime=$((end-start))
 echo $runtime
+
+cd ../..
