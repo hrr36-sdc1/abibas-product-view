@@ -92,7 +92,7 @@ exports.generateProductFile = (N, n, ID) => {
 exports.generateImageData = (N, n) => {
   const storage = [];
   for (let i = 0; i < N; i += 1) {
-    const rand = 1 + Math.floor(Math.random() * 3);
+    const rand = 1 + Math.floor(Math.random() * 5);
     storage.push(n * N + i + ',' + data[`shoeLink${rand}`].join('***'));
   }
   return storage;

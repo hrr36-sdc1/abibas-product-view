@@ -2,27 +2,41 @@ const faker = require('faker');
 
 module.exports.data = {
   shoeLink1: [
-    'https://s3.amazonaws.com/fec-abibas/f6937e328b7c44ef886ea97501027a8f_9366.jpg',
-    'https://s3.amazonaws.com/fec-abibas/e50a6e3482a24d789c32a7af00eb1e98_9366.jpg',
-    'https://s3.amazonaws.com/fec-abibas/da5dee235bc64897aa4ba976010e3dfc_9366.jpg',
-    'https://s3.amazonaws.com/fec-abibas/Ultraboost_All_Terrain_Shoes_White_B37699_03_standard.jpg',
-    'https://s3.amazonaws.com/fec-abibas/4536212689c849fca916a976010e1aa8_9366.jpg',
-    'https://s3.amazonaws.com/fec-abibas/362670b24a8f4f0ab4caa976010e60b7_9366.jpg',
-    'https://s3.amazonaws.com/fec-abibas/1264df3066694fe981a0a976010e5511_9366.jpg'
+    'https://s3.amazonaws.com/sdc-images-big/boss-fight-free-high-quality-stock-images-photos-photography-white-nike-shoes.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/FLAGSHIP_MultiColor.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-17-18_Studio_3_10-51-32_DADDYPLS_Yellow_0579_AG+(1).jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-17-18_Studio_3_10-51-39_DADDYPLS_Yellow_0580_AG.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-30-18_Studio_4_11-43-17__FLAGSHIP_MultiColor_0139__AG.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-17-18_Studio_3_10-51-32_DADDYPLS_Yellow_0579_AG.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-17-18_Studio_4_14-23-33_POLICECAR_White_0106_AG.jpg'
   ],
   shoeLink2: [
-    'https://s3.amazonaws.com/fec-abibas/Ultraboost_All_Terrain_Shoes_Grey_F35236_04_standard.jpg',
-    'https://s3.amazonaws.com/fec-abibas/9c01dbf404564288a4b4a7af00f3d09f_9366.jpg',
-    'https://s3.amazonaws.com/fec-abibas/9bd9d0ae47aa4e6c85b8a97e012f405b_9366.jpg',
-    'https://s3.amazonaws.com/fec-abibas/83a6753663a74bb49a85a7af00f3ae43_9366.jpg',
-    'https://s3.amazonaws.com/fec-abibas/4d869696686549319caaa97e012f6383_9366.jpg'
+    'https://s3.amazonaws.com/sdc-images-big/9ffdd46d-c45c-4170-a45c-56620bd4ced8-sop.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/1_9b089153-4bab-40ad-bdd2-4138e8cd754d.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/POLICECAR_Black.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-17-18_Studio_3_10-04-42_POLICECAR_Black_0478_AG.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-17-18_Studio_3_10-04-56_POLICECAR_Black_0480_AG_JF.jpg'
   ],
   shoeLink3: [
-    'https://s3.amazonaws.com/fec-abibas/c7b58d47075441b48d8ba97e012f7bdb_9366.jpg',
-    'https://s3.amazonaws.com/fec-abibas/bc1681a65a70433fb920a7af00eaf437_9366.jpg',
-    'https://s3.amazonaws.com/fec-abibas/30580fc5f5a74a1eaa52a97c0124f77d_9366.jpg',
-    'https://s3.amazonaws.com/fec-abibas/07a07dbbb4ef4ef3bd44a7af00f3be4c_9366.jpg',
-    'https://s3.amazonaws.com/fec-abibas/061ba858e69744459f8ba7af00f3de80_9366.jpg'
+    'https://s3.amazonaws.com/sdc-images-big/FLAGSHIP_MultiColor.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/dfc56d4ff1fc1ab331477b963e723562.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-27-18_Studio_3_11-02-57_FLAGSHIP_MultiColor_0781_AG_fd47cb59-0870-4d55-b5b8-8d908f1928b1+(1).jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-17-18_Studio_3_09-17-10_POLICECAR_Pink_0396_AG.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-17-18_Studio_3_10-04-56_POLICECAR_Black_0480_AG_JF+(1).jpg'
+  ],
+  shoeLink4: [
+    'https://s3.amazonaws.com/sdc-images-big/07-17-18_Studio_3_10-51-23_DADDYPLS_Yellow_0577_AG.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-17-18_Studio_4_13-48-25_POLICECAR_Pink_0101_AG.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-27-18_Studio_3_11-02-42_FLAGSHIP_MultiColor_0778_AG_c9f7af97-297d-4374-b14e-daf726442ab9.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-17-18_Studio_4_14-20-25_POLICECAR_Black_0102_AG.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-27-18_Studio_3_11-02-57_FLAGSHIP_MultiColor_0781_AG_fd47cb59-0870-4d55-b5b8-8d908f1928b1.jpg',
+  ],
+  shoeLink5: [
+    'https://s3.amazonaws.com/sdc-images-big/07-27-18_Studio_3_11-02-53_FLAGSHIP_MultiColor_0780_AG_f0eed9f3-fc96-4af0-a6b9-79d0df4e2da0.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-27-18_Studio_3_11-02-57_FLAGSHIP_MultiColor_0781_AG_fd47cb59-0870-4d55-b5b8-8d908f1928b1.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-27-18_Studio_3_11-02-42_FLAGSHIP_MultiColor_0778_AG_c9f7af97-297d-4374-b14e-daf726442ab9.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-30-18_Studio_4_11-43-17__FLAGSHIP_MultiColor_0139__AG.jpg',
+    'https://s3.amazonaws.com/sdc-images-big/07-17-18_Studio_3_09-17-21_POLICECAR_Pink_0398_AG_JF.jpg',
   ],
   product1: {
     colors: 'Grey, Grey, Grey',
