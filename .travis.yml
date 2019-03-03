@@ -9,6 +9,6 @@ env:
 services:
   - postgresql
 before_script:
-  - psql -c 'create database products;' -U postgres
+  - psql -c 'create database products_test;' -U postgres
   - knex migrate:latest --env development
   - npm run dev-db:seed
