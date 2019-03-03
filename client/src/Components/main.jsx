@@ -53,6 +53,7 @@ class Main extends React.Component {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getImages(id, callback) {
     $.ajax({
       type: 'GET',

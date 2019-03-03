@@ -1,6 +1,5 @@
 exports.seed = (knex, Promise) => knex('images').del()
   .then(() => knex('images').insert({
-    id: 1,
     links: [
       'https://s3.amazonaws.com/fec-abibas/f6937e328b7c44ef886ea97501027a8f_9366.jpg',
       'https://s3.amazonaws.com/fec-abibas/e50a6e3482a24d789c32a7af00eb1e98_9366.jpg',
@@ -12,7 +11,6 @@ exports.seed = (knex, Promise) => knex('images').del()
     ].join('***'),
   }))
   .then(() => knex('images').insert({
-    id: 2,
     links: [
       'https://s3.amazonaws.com/fec-abibas/Ultraboost_All_Terrain_Shoes_Grey_F35236_04_standard.jpg',
       'https://s3.amazonaws.com/fec-abibas/9c01dbf404564288a4b4a7af00f3d09f_9366.jpg',
@@ -22,7 +20,6 @@ exports.seed = (knex, Promise) => knex('images').del()
     ].join('***'),
   }))
   .then(() => knex('images').insert({
-    id: 3,
     links: [
       'https://s3.amazonaws.com/fec-abibas/c7b58d47075441b48d8ba97e012f7bdb_9366.jpg',
       'https://s3.amazonaws.com/fec-abibas/bc1681a65a70433fb920a7af00eaf437_9366.jpg',

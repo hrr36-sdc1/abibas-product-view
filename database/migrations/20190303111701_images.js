@@ -1,5 +1,5 @@
 exports.up = (knex, Promise) => knex.schema.createTable('images', (table) => {
-  table.integer('id').primary().notNullable();
+  table.increments('id');
   table.text('links').notNullable();
 });
 
