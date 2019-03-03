@@ -25,7 +25,7 @@ class Main extends React.Component {
   }
 
   onRelatedClick(i) {
-    this.getImages(this.state.products[i].image_ID, (data) => { this.setState({ images: data }); });
+    this.getImages(this.state.products[i].image_id, (data) => { this.setState({ images: data }); });
   }
 
   onExitClick() {
@@ -47,7 +47,7 @@ class Main extends React.Component {
         this.setState({
           products: data,
         });
-        this.getImages(data[0].image_ID, (data) => { this.setState({ images: data }); });
+        this.getImages(data[0].image_id, (data) => { this.setState({ images: data }); });
         this.updateOtherImages(data);
       },
     });
@@ -57,7 +57,7 @@ class Main extends React.Component {
     $.ajax({
       type: 'GET',
       url: '/images',
-      data: { imageID: id },
+      data: { image_id: id },
       contentType: 'application/json',
       success: (data) => { callback(data); },
       error: (err) => { console.log('error'); },
@@ -67,7 +67,7 @@ class Main extends React.Component {
   updateOtherImages(data) {
     for (let i = 0; i < data.length; i++) {
       // let temp = this.state.otherImages;
-      this.getImages(data[i].image_ID, (images) => {
+      this.getImages(data[i].image_id, (images) => {
         const current = this.state.otherImages;
         current.push(images[0]);
         this.setState({ otherImages: current });

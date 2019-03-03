@@ -1,8 +1,9 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable camelcase */
 /* eslint linebreak-style: ["error", "windows"] */
 
 const express = require('express');
-const DB = require('../database/index.js');
+var queries = require('../database/queries');
 
 const app = express();
 
@@ -11,13 +12,7 @@ app.use(express.json());
 
 app.get('/products', (req, res) => {
   const { model } = req.query;
-  // console.log(Shoes);
-  DB.Shoes.sync()
-    .then(() => DB.Shoes.findAll({
-      where: {
-        model,
-      },
-    }))
+  queries.getAllShoes()
     .then((data) => {
       if (data.length === 0) {
         res.sendStatus(204);
@@ -25,7 +20,7 @@ app.get('/products', (req, res) => {
       res.json(data);
     });
 });
-
+/*
 app.post('/products', (req, res) => {
   const product = req.body;
   DB.Shoes.sync()
@@ -36,7 +31,7 @@ app.post('/products', (req, res) => {
         model: product.model,
         sizes: product.sizes,
         price: product.price,
-        image_ID: Math.ceil(Math.random() * 3),
+        image_id: Math.ceil(Math.random() * 3),
         review_count: product.review_count,
         avg_stars: Math.random() * 5,
       })
@@ -64,21 +59,17 @@ app.delete('/products/:productId', (req, res) => {
         .catch(err => console.log(err));
     });
 });
-
+*/
 app.get('/images', (req, res) => {
-  const { imageID } = req.query;
-  DB.Images.sync()
-    .then(() => DB.Images.findOne({
-      where: {
-        img_id: imageID,
-      },
-    }))
+  const { image_id } = req.query;
+  console.log(req.query);
+  queries.getAllImagesById(image_id)
     .then((data) => {
     // console.log(data.links.split('***'));
       res.json(data.links.split('***'));
     });
 });
-
+/*
 app.post('/images', (req, res) => {
   const images = req.body.images.join('***');
 
@@ -112,5 +103,5 @@ app.delete('/images/:imageId', (req, res) => {
     })
     .catch(err => console.log(err));
 });
-
+*/
 module.exports = app;
