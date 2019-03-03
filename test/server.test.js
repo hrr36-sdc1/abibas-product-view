@@ -1,4 +1,4 @@
-/* eslint linebreak-style: ["error", "windows"] */
+/* eslint-disable linebreak-style */
 
 const request = require('supertest');
 const app = require('../server/index.js');

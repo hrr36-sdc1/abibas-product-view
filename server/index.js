@@ -1,9 +1,8 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable camelcase */
-/* eslint linebreak-style: ["error", "windows"] */
 
 const express = require('express');
-var queries = require('../database/queries');
+const queries = require('../database/queries');
 
 const app = express();
 
