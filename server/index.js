@@ -10,7 +10,8 @@ app.use(express.static(`${__dirname}/../public`));
 app.use(express.json());
 
 app.get('/products', (req, res) => {
-  const { model } = req.query || { model: 'UltraBoost All Terrain Shoes' };
+  const { model } = req.query;
+
   queries.getAllShoesByModel(model)
     .then((data) => {
       if (data.length === 0) {
