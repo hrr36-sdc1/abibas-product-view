@@ -7,6 +7,6 @@ cache:
 env:
   - DB_HOST=localhost DB_USER=root DB_PW=
 services:
-  - mysql
+  - postgresql
 before_script:
-  - npm run test-db:setup
+  - npm run test-db:seed

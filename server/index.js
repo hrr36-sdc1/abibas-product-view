@@ -10,13 +10,14 @@ app.use(express.static(`${__dirname}/../public`));
 app.use(express.json());
 
 app.get('/products', (req, res) => {
-  const { model } = req.query;
-  queries.getAllShoes()
+  const { model } = req.query || { model: 'UltraBoost All Terrain Shoes' }
+  queries.getAllShoesByModel(model)
     .then((data) => {
       if (data.length === 0) {
         res.sendStatus(204);
+      } else {
+        res.json(data);
       }
-      res.json(data);
     });
 });
 /*

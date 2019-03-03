@@ -15,6 +15,10 @@ function getAllShoes() {
   return Shoes().select();
 }
 
+function getAllShoesByModel(model) {
+  return Shoes().where('model', model);
+}
+
 function getSingleShoeById(shoeId) {
   return Shoes().where('id', parseInt(shoeId, 10)).first();
 }
@@ -37,6 +41,7 @@ function getAllImagesForShoeId(shoeId) {
 
 module.exports = {
   getAllShoes,
+  getAllShoesByModel,
   getSingleShoeById,
   getSingleShoeByModel,
   getAllImages,

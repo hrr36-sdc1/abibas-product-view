@@ -19,13 +19,13 @@ describe('Server should route appropriately', () => {
 
   it('should 204 GET when no products found', (done) => {
     request(app)
-      .get('/products')
+      .get('/products?model=This is Not a Real type of Shoe')
       .then((res) => {
         expect(res.statusCode).toBe(204);
         done();
       });
   });
-
+/*
   it('should respond properly to POST products', (done) => {
     request(app)
       .post('/products')
@@ -47,16 +47,16 @@ describe('Server should route appropriately', () => {
         done();
       });
   });
-
+*/
   it('should respond properly to GET images', (done) => {
     request(app)
-      .get('/images/?imageID=1')
+      .get('/images/?image_id=1')
       .then((res) => {
         expect(res.statusCode).toBe(200);
         done();
       });
   });
-
+/*
   it('should respond properly to POST images', (done) => {
     request(app)
       .post('/images')
@@ -78,4 +78,5 @@ describe('Server should route appropriately', () => {
         done();
       });
   });
+*/
 });
