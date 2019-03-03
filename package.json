@@ -15,7 +15,7 @@
     "db:migration": "knex migrate:latest",
     "dev-db:seed": "knex seed:run --env development",
     "test-db:seed": "knex seed:run --env test",
-    "prod-db:seed": "NODE_ENV=produdction ./database/utils/sdc_seed.sh"
+    "prod-db:seed": "NODE_ENV=production ./database/utils/sdc_seed.sh"
   },
   "dependencies": {
     "babel-core": "^7.0.0-bridge.0",

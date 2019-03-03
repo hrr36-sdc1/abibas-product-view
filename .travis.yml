@@ -5,8 +5,10 @@ cache:
   directories:
     - "node_modules"
 env:
-  - DB_HOST=localhost DB_USER=root DB_PW=
+  - DB_HOST=localhost DB_USER=postgres DB_PW=
 services:
   - postgresql
 before_script:
-  - npm run test-db:seed
+  - psql -c 'create database products;' -U postgres
+  - knex migrate:latest --env development
+  - npm run dev-db:seed
