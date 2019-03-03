@@ -25,7 +25,7 @@ exports.generateProductData = (N, n) => {
   const colors = [];
   const models = ['UltraBoost All Terrain Shoes'];
   const types = [];
-  const sizes = [6.5, 7, 8, 9, 10, 12.5, 14, 16]
+  const sizes = [6.5, 7, 8, 9, 10, 12.5, 14, 16];
   for (let i = 0; i < 10; i += 1) {
     colors.push(faker.commerce.color());
     types.push(`${faker.commerce.productAdjective()} ${faker.commerce.product()}`);
@@ -38,7 +38,6 @@ exports.generateProductData = (N, n) => {
   for (let i = 0; i < N; i += 1) {
     randFloor = Math.floor(Math.random() * colors.length);
     storage.push({
-      id: n * N + i,
       colors: colors[randFloor],
       type: types[randFloor],
       model: models[randFloor],
@@ -64,7 +63,7 @@ exports.generateProductFile = (N, n, ID) => {
   const writeStream = fs.createWriteStream(outputPath, { encoding: 'utf8' });
 
   // write headers, generate products, and write those to file
-  const headers = ['id', 'colors', 'type', 'model', 'sizes', 'price', 'image_id', 'review_count', 'avg_stars'];
+  const headers = ['colors', 'type', 'model', 'sizes', 'price', 'image_id', 'review_count', 'avg_stars'];
 
   writeStream.write(`${exports.constructCsvLine(headers)}\n`);
   const storage = exports.generateProductData(N, n);
@@ -93,7 +92,7 @@ exports.generateImageData = (N, n) => {
   const storage = [];
   for (let i = 0; i < N; i += 1) {
     const rand = 1 + Math.floor(Math.random() * 5);
-    storage.push(n * N + i + ',' + data[`shoeLink${rand}`].join('***'));
+    storage.push(data[`shoeLink${rand}`].join('***'));
   }
   return storage;
 };
@@ -105,7 +104,7 @@ exports.generateImageFile = (N, n, ID) => {
   const writeStream = fs.createWriteStream(outputPath, { encoding: 'utf8' });
 
   // write headers, generate images, and write those to file
-  const headers = ['id', 'links'];
+  const headers = ['links'];
   writeStream.write(`${exports.constructCsvLine(headers)}\n`);
   const storage = exports.generateImageData(N, n);
   for (let i = 0; i < (storage.length); i += 1) {
