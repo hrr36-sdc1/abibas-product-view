@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Main from '../client/src/Components/main.jsx';
-import Images from '../client/src/Components/product-view/images.jsx';
-import InfoSection from '../client/src/Components/Product-info/info.jsx';
+import Main from '../client/src/Components/main';
+import Images from '../client/src/Components/product-view/images';
+import InfoSection from '../client/src/Components/Product-info/info';
 
 describe('Main Component', () => {
   const component = shallow(<Main />);
@@ -13,5 +13,4 @@ describe('Main Component', () => {
   it('should render info section', () => {
     expect(component.find(InfoSection)).toHaveLength(1);
   });
-})
-
+});
