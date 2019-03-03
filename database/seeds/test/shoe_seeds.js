@@ -1,6 +1,5 @@
 exports.seed = (knex, Promise) => knex('shoes').del()
   .then(() => knex('shoes').insert({
-    id: 1,
     colors: 'Grey, Grey, Grey',
     type: 'Men\'s Running',
     model: 'UltraBoost All Terrain Shoes',
@@ -11,7 +10,6 @@ exports.seed = (knex, Promise) => knex('shoes').del()
     avg_stars: 4.75,
   }))
   .then(() => knex('shoes').insert({
-    id: 2,
     colors: 'Night Red, Noble Maroon, Bright Blue',
     type: 'Men\'s Running',
     model: 'UltraBoost All Terrain Shoes',
@@ -22,7 +20,6 @@ exports.seed = (knex, Promise) => knex('shoes').del()
     review_count: 320,
   }))
   .then(() => knex('shoes').insert({
-    id: 3,
     colors: 'Chalk White, Cloud White, Grey',
     type: 'Men\'s Running',
     model: 'UltraBoost All Terrain Shoes',

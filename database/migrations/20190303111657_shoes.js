@@ -1,5 +1,5 @@
 exports.up = (knex, Promise) => knex.schema.createTable('shoes', (table) => {
-  table.integer('id').primary().notNullable();
+  table.increments('id');
   table.string('colors').notNullable();
   table.string('type').notNullable();
   table.string('model').notNullable().index('model_idx');
