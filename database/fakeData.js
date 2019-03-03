@@ -1,5 +1,3 @@
-const faker = require('faker');
-
 module.exports.data = {
   shoeLink1: [
     'https://s3.amazonaws.com/sdc-images-big/boss-fight-free-high-quality-stock-images-photos-photography-white-nike-shoes.jpg',
@@ -68,6 +66,4 @@ module.exports.data = {
     avg_stars: 4.7,
     review_count: 150
   },
-
-
 };
