@@ -5,7 +5,7 @@ const app = require('../server/index.js');
 const { data } = require('../database/fakeData.js');
 
 describe('Server should route appropriately', () => {
-
+  /* Add beforeall / afterall for database testing */
   let postedItemToDelete;
 
   it('should respond properly to GET products', (done) => {
@@ -25,7 +25,7 @@ describe('Server should route appropriately', () => {
         done();
       });
   });
-/*
+
   it('should respond properly to POST products', (done) => {
     request(app)
       .post('/products')
@@ -37,17 +37,25 @@ describe('Server should route appropriately', () => {
       });
   });
 
-  // TODO: test PUT
-
-  it('should respond properly to DELETE products', (done) => {
+  it('should respond properly to PUT products', (done) => {
+    data.product1.colors = 'Brown, Blue, Blue';
     request(app)
-      .delete(`/products/${postedItemToDelete}`)
+      .put('/products/1')
+      .send(data.product1)
       .then((res) => {
         expect(res.statusCode).toBe(200);
         done();
       });
   });
-*/
+
+  it('should respond properly to DELETE products', (done) => {
+    request(app)
+      .delete('/products/1')
+      .then((res) => {
+        expect(res.statusCode).toBe(200);
+        done();
+      });
+  });
   it('should respond properly to GET images', (done) => {
     request(app)
       .get('/images/?image_id=1')
@@ -56,7 +64,7 @@ describe('Server should route appropriately', () => {
         done();
       });
   });
-/*
+
   it('should respond properly to POST images', (done) => {
     request(app)
       .post('/images')
@@ -68,15 +76,23 @@ describe('Server should route appropriately', () => {
       });
   });
 
-  // TODO: test PUT
-
-  it('should respond properly to DELETE images', (done) => {
+  it('should respond properly to PUT images', (done) => {
     request(app)
-      .delete(`/images/${postedItemToDelete}`)
+      .put('/images/3')
+      .send({ images: ['www.blahblah.com'] })
       .then((res) => {
         expect(res.statusCode).toBe(200);
         done();
       });
   });
-*/
+
+  it('should respond properly to DELETE images', (done) => {
+    request(app)
+      .delete('/images/1')
+      .then((res) => {
+        expect(res.statusCode).toBe(200);
+        done();
+      });
+  });
+
 });
