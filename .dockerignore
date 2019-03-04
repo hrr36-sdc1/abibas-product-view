@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+.env
+node_modules/
+data/
+LICENSE
+README.md
+.gitignore
+.git/
+example.env
+.travis.yml
+docker/
