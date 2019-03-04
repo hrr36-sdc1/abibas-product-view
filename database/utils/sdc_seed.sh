@@ -6,7 +6,7 @@ cd database/utils/
 start=`date +%s`
 
 # generate data files
-numseeds=1
+numseeds=20
 N=1000000
 for i in `seq 1 $numseeds`;
 do

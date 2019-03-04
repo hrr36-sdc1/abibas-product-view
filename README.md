@@ -32,4 +32,11 @@ From within the root directory:
 ```sh
 npm install
 ```
+## Deployment
 
+To deploy build image, run a container, and seed the psql db:
+```sh
+docker build . -t latest -f docker/Dockerfile.pg
+docker run -d latest -c random_page_cost=1 -c work_mem='16MB'
+docker exec -d conainer_name sh ./database/db_conf.sh
+```

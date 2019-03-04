@@ -30,4 +30,3 @@ dist/
 
 .env
 *.csv
-*.json
