@@ -21,7 +21,7 @@ function getAllShoes() {
 }
 
 function getAllShoesByModel(model) {
-  return Shoes().where('model', model);
+  return Shoes().where('model', model).whereRaw('id > ?', [11000000]).limit(5);
 }
 
 function getSingleShoeById(shoeId) {

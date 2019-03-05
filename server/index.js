@@ -11,8 +11,19 @@ app.use(express.json());
 
 app.get('/products', (req, res) => {
   const { model } = req.query;
-
   queries.getAllShoesByModel(model)
+    .then((data) => {
+      if (data.length === 0) {
+        res.sendStatus(204);
+      } else {
+        res.json(data);
+      }
+    });
+});
+
+app.get('/products/:productId', (req, res) => {
+  const { productId } = req.params;
+  queries.getSingleShoeById(productId)
     .then((data) => {
       if (data.length === 0) {
         res.sendStatus(204);
@@ -43,6 +54,13 @@ app.delete('/products/:productId', (req, res) => {
 app.get('/images', (req, res) => {
   const { image_id } = req.query;
   queries.getAllImagesById(image_id)
+    .then(data => res.json(data.links.split('***')))
+    .catch(err => console.log(err));
+});
+
+app.get('/images/:imageId', (req, res) => {
+  const { imageId } = req.params;
+  queries.getAllImagesById(imageId)
     .then(data => res.json(data.links.split('***')))
     .catch(err => console.log(err));
 });
