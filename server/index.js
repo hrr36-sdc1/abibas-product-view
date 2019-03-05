@@ -2,10 +2,13 @@
 /* eslint-disable camelcase */
 
 const express = require('express');
+const compression = require('compression');
+
 const queries = require('../database/queries');
 
 const app = express();
 
+app.use(compression());
 app.use(express.static(`${__dirname}/../public`));
 app.use(express.json());
 
@@ -23,7 +26,7 @@ app.get('/products', (req, res) => {
 
 app.get('/products/:productId', (req, res) => {
   const { productId } = req.params;
-  queries.getSingleShoeById(productId)
+  queries.getSingleShoeByIdWithRelatedImages(productId)
     .then((data) => {
       if (data.length === 0) {
         res.sendStatus(204);

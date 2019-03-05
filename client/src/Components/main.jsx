@@ -1,5 +1,7 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable camelcase */
 import React from 'react';
-import $ from 'jquery';
+import axios from 'axios';
 import Images from './product-view/images';
 import InfoSection from './Product-info/info';
 import ImageCarousel from './product-view/image-carousel';
@@ -14,18 +16,23 @@ class Main extends React.Component {
       otherImages: [],
       view: false,
     };
-    this.getImages = this.getImages.bind(this);
     this.onRelatedClick = this.onRelatedClick.bind(this);
     this.onExitClick = this.onExitClick.bind(this);
     this.onCarouselClick = this.onCarouselClick.bind(this);
   }
 
   componentDidMount() {
-    this.getProduct('UltraBoost All Terrain Shoes');
+    this.getProduct();
   }
 
   onRelatedClick(i) {
-    this.getImages(this.state.products[i].image_id, (data) => { this.setState({ images: data }); });
+    const { products } = this.state;
+    const images = products[i].links.split('***');
+    const otherImages = products.map(product => product.links.split('***'));
+    this.setState({
+      images,
+      otherImages,
+    });
   }
 
   onExitClick() {
@@ -36,44 +43,23 @@ class Main extends React.Component {
     this.setState({ view: true });
   }
 
-  getProduct(model) {
-    $.ajax({
-      type: 'GET',
-      url: '/products',
-      data: { model },
-      contentType: 'application/json',
-      error: (err) => { console.log(err, 'failed retrieving products'); },
-      success: (data) => {
+  getProduct() {
+    axios.all([
+      axios.get(`/products/${Math.floor(Math.random() * 2000000) + 8500000}`),
+      axios.get(`/products/${Math.floor(Math.random() * 2000000) + 8500000}`),
+      axios.get(`/products/${Math.floor(Math.random() * 2000000) + 8500000}`),
+    ])
+      .then((res) => {
+        const products = res.map(response => response.data);
+        const images = products[0].links.split('***');
+        const otherImages = products.map(product => product.links.split('***'));
         this.setState({
-          products: data,
+          products,
+          images,
+          otherImages,
         });
-        this.getImages(data[0].image_id, (data) => { this.setState({ images: data }); });
-        this.updateOtherImages(data);
-      },
-    });
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  getImages(id, callback) {
-    $.ajax({
-      type: 'GET',
-      url: '/images',
-      data: { image_id: id },
-      contentType: 'application/json',
-      success: (data) => { callback(data); },
-      error: (err) => { console.log('error'); },
-    });
-  }
-
-  updateOtherImages(data) {
-    for (let i = 0; i < data.length; i++) {
-      // let temp = this.state.otherImages;
-      this.getImages(data[i].image_id, (images) => {
-        const current = this.state.otherImages;
-        current.push(images[0]);
-        this.setState({ otherImages: current });
-      });
-    }
+      })
+      .catch(err => console.log(err, 'failed retrieving products'));
   }
 
   renderImageCarousel() {
@@ -99,3 +85,11 @@ class Main extends React.Component {
 }
 
 export default Main;
+
+
+
+/* IDEAS:
+
+redo queries so that one GET returns a product and its images, instead of
+GET product -> GET image -> GET related images
+*/

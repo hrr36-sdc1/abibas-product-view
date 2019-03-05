@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'react-bootstrap/Image';
-import $ from 'jquery';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -30,18 +29,6 @@ class RelatedProducts extends React.Component {
     }
   }
 
-  getImages(id) {
-    $.ajax({
-      type: 'GET',
-      url: '/images',
-      data: { imageID: id},
-      contentType: 'application/json',
-      success: (data)=> { return data[0];
-      },
-      error: (err) => {console.log('error')}
-    })
-  }
-
   render() {
     let colors = this.props.currentProduct ? this.props.currentProduct.colors.split(',') : [];
     return (
@@ -57,7 +44,7 @@ class RelatedProducts extends React.Component {
         <div className="other-colors">
           {this.props.otherImages.map((image, i) => {
             return (
-              <Image key={i} onClick={()=> {this.props.infoClick(i); this.props.onRelatedClick(i)}}className="other-thumbnail" src={image} roundedCircle />
+              <Image key={i} onClick={()=> {this.props.infoClick(i); this.props.onRelatedClick(i)}}className="other-thumbnail" src={image[i]} roundedCircle />
             )
           })}
         </div>

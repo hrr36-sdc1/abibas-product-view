@@ -6,8 +6,8 @@ cd /database/utils/
 start=`date +%s`
 
 # generate data files
-numseeds=500
-N=20000
+numseeds=100
+N=120000
 for i in `seq 1 $numseeds`;
 do
   ID=$i N=$N node ./generate_products.js

@@ -1,0 +1,9 @@
+config:
+  target: 'https://s3.us-east-2.amazonaws.com'
+  phases:
+    - duration: 2
+      arrivalRate: 10
+scenarios:
+  - flow:
+    - get:
+        url: "/sdc-images-smaller/boss-fight-free-high-quality-stock-images-photos-photography-white-nike-shoes.jpg"

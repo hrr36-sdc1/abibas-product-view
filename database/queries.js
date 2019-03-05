@@ -32,6 +32,14 @@ function getSingleShoeByModel(shoeModel) {
   return Shoes().where('model', shoeModel).first();
 }
 
+function getSingleShoeByIdWithRelatedImages(shoeId) {
+  return Shoes()
+    .join('images', 'shoes.image_id', '=', 'images.id')
+    .where('shoes.id', parseInt(shoeId, 10))
+    .select()
+    .first();
+}
+
 /* PUT */
 function updateShoeById(id, data) {
   return Shoes().where('id', id).update({ ...data });
@@ -79,6 +87,7 @@ module.exports = {
   getAllShoesByModel,
   getSingleShoeById,
   getSingleShoeByModel,
+  getSingleShoeByIdWithRelatedImages,
   updateShoeById,
   insertShoe,
   deleteShoeById,
