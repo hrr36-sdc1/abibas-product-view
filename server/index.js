@@ -4,15 +4,18 @@
 const express = require('express');
 const compression = require('compression');
 
+const { redisMiddleware } = require('./redisMiddleware');
 const queries = require('../database/queries');
 
+
+/* EXPRESS APP */
 const app = express();
 
 app.use(compression());
 app.use(express.static(`${__dirname}/../public`));
 app.use(express.json());
 
-app.get('/products', (req, res) => {
+app.get('/products', redisMiddleware, (req, res) => {
   const { model } = req.query;
   queries.getAllShoesByModel(model)
     .then((data) => {
@@ -24,7 +27,7 @@ app.get('/products', (req, res) => {
     });
 });
 
-app.get('/products/:productId', (req, res) => {
+app.get('/products/:productId', redisMiddleware, (req, res) => {
   const { productId } = req.params;
   queries.getSingleShoeByIdWithRelatedImages(productId)
     .then((data) => {

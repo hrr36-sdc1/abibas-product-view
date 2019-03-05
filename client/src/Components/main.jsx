@@ -45,12 +45,12 @@ class Main extends React.Component {
 
   getProduct() {
     axios.all([
-      axios.get(`/products/${Math.floor(Math.random() * 2000000) + 8500000}`),
-      axios.get(`/products/${Math.floor(Math.random() * 2000000) + 8500000}`),
-      axios.get(`/products/${Math.floor(Math.random() * 2000000) + 8500000}`),
+      axios.get(`/products/${11562700}`),
+      axios.get(`/products/${11214058}`),
+      axios.get(`/products/${10857618}`),
     ])
       .then((res) => {
-        const products = res.map(response => response.data);
+        const products = res.map(response => JSON.parse(response.data));
         const images = products[0].links.split('***');
         const otherImages = products.map(product => product.links.split('***'));
         this.setState({

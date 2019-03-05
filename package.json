@@ -32,6 +32,7 @@
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.8.1",
     "react-star-ratings": "^2.3.0",
+    "redis": "^2.8.0",
     "sequelize": "^4.42.0",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3"
@@ -57,9 +58,12 @@
     "faker": "^4.1.0",
     "jest": "^24.1.0",
     "jest-enzyme": "^7.0.1",
+    "mini-css-extract-plugin": "^0.5.0",
     "newrelic": "^5.6.0",
     "nodemon": "^1.18.10",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "supertest": "^3.4.2",
+    "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack-cli": "^3.2.3"
   },
   "jest": {

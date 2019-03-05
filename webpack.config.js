@@ -1,8 +1,28 @@
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
 let path = require('path');
 let SRC_DIR = path.join(__dirname, '/client/src');
 let DIST_DIR = path.join(__dirname, '/public');
 
 module.exports = {
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
+  ],
   entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: 'bundle.js',
@@ -22,7 +42,7 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        use: ['style-loader','css-loader']
+        use: [MiniCssExtractPlugin.loader, 'style-loader','css-loader']
       },
       {
         test: /\.scss$/,
