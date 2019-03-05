@@ -36,8 +36,7 @@ npm install
 
 To deploy build image, run a container, and seed the psql db:
 ```sh
-docker create -v /var/lib/postgresql/data --name postgres9.3.6-data busybox
 docker build . -t latest -f docker/Dockerfile.pg
-docker run -d latest -c random_page_cost=1 -c work_mem='16MB' -d --volumes-from postgres9.3.6-data postgres:9.3.6
+docker run -v pgdata:/var/lib/postgresql/data -d baile320/db:latest -c random_page_cost=1 -c work_mem='16MB'
 docker exec -d container_name sh ./database/db_conf.sh
 ```
