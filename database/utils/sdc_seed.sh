@@ -1,13 +1,13 @@
 #!/bin/bash
 #!/usr/bin/env node
 
-cd database/utils/
+cd /database/utils/
 
 start=`date +%s`
 
 # generate data files
-numseeds=20
-N=1000000
+numseeds=500
+N=20000
 for i in `seq 1 $numseeds`;
 do
   ID=$i N=$N node ./generate_products.js

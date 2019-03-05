@@ -21,3 +21,5 @@ ENV POSTGRES_DB products
 # EXPOSE PORT
 ARG port=5432
 EXPOSE $port
+
+VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
