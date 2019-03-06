@@ -10,7 +10,7 @@
   "scripts": {
     "start": "nodemon server/app.js",
     "knex": "knex",
-    "react-dev": "webpack -d --watch",
+    "react-dev": "webpack -d -p --watch",
     "test": "NODE_ENV=test jest --forceExit",
     "db:config": "./database/db_conf.sh",
     "db:migration": "knex migrate:latest",
@@ -19,20 +19,20 @@
     "prod-db:seed": "NODE_ENV=production ./database/utils/sdc_seed.sh"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "bootstrap": "^4.2.1",
+    "compression": "^1.7.3",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "jquery": "^3.3.1",
     "knex": "^0.16.3",
-    "mysql": "^2.16.0",
-    "mysql2": "^1.6.5",
     "pg": "^7.8.1",
     "react": "^16.8.1",
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.8.1",
     "react-star-ratings": "^2.3.0",
+    "redis": "^2.8.0",
     "sequelize": "^4.42.0",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3"
@@ -58,8 +58,12 @@
     "faker": "^4.1.0",
     "jest": "^24.1.0",
     "jest-enzyme": "^7.0.1",
+    "mini-css-extract-plugin": "^0.5.0",
+    "newrelic": "^5.6.0",
     "nodemon": "^1.18.10",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "supertest": "^3.4.2",
+    "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack-cli": "^3.2.3"
   },
   "jest": {

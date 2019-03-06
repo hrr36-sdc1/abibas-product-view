@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 import ImageGallery from './image-gallery.jsx';
 import CurrentImage from './current-image.jsx';
 

@@ -1,0 +1,28 @@
+config:
+  target: 'http://localhost:8002'
+  phases:
+    - duration: 5
+      arrivalRate: 1200
+  payload:
+    path: "./payload.csv"
+    fields:
+      - "colors"
+      - "type"
+      - "model"
+      - "sizes"
+      - "price"
+      - "image_id"
+      - "review_count"
+      - "avg_stars"
+    order: sequence
+    skipHeader: true
+scenarios:
+  - flow:
+    - get:
+        url: "/"
+#  - flow:
+#    - get:
+#        url: "/products/11284739"
+#  - flow:
+#    - post:
+#        url: "/images"

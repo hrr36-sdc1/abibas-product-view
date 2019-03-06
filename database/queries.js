@@ -21,7 +21,7 @@ function getAllShoes() {
 }
 
 function getAllShoesByModel(model) {
-  return Shoes().where('model', model);
+  return Shoes().where('model', model).whereRaw('id > ?', [11000000]).limit(5);
 }
 
 function getSingleShoeById(shoeId) {
@@ -30,6 +30,14 @@ function getSingleShoeById(shoeId) {
 
 function getSingleShoeByModel(shoeModel) {
   return Shoes().where('model', shoeModel).first();
+}
+
+function getSingleShoeByIdWithRelatedImages(shoeId) {
+  return Shoes()
+    .join('images', 'shoes.image_id', '=', 'images.id')
+    .where('shoes.id', parseInt(shoeId, 10))
+    .select()
+    .first();
 }
 
 /* PUT */
@@ -79,6 +87,7 @@ module.exports = {
   getAllShoesByModel,
   getSingleShoeById,
   getSingleShoeByModel,
+  getSingleShoeByIdWithRelatedImages,
   updateShoeById,
   insertShoe,
   deleteShoeById,
