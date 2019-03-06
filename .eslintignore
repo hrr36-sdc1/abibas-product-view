@@ -11,3 +11,4 @@ webpack.config.js
 /coverage/
 package-lock.json
 package.json
+dump.rdb
