@@ -36,6 +36,27 @@ module.exports.data = {
     'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-30-18_Studio_4_11-43-17__FLAGSHIP_MultiColor_0139__AG.jpg',
     'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-17-18_Studio_3_09-17-21_POLICECAR_Pink_0398_AG_JF.jpg',
   ],
+  shoeLink6: [
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-27-18_Studio_3_11-02-53_FLAGSHIP_MultiColor_0780_AG_f0eed9f3-fc96-4af0-a6b9-79d0df4e2da0.jpg',
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-27-18_Studio_3_11-02-57_FLAGSHIP_MultiColor_0781_AG_fd47cb59-0870-4d55-b5b8-8d908f1928b1.jpg',
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-30-18_Studio_4_11-43-17__FLAGSHIP_MultiColor_0139__AG.jpg',
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/POLICECAR_Black.jpg',
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-27-18_Studio_3_11-02-57_FLAGSHIP_MultiColor_0781_AG_fd47cb59-0870-4d55-b5b8-8d908f1928b1.jpg',
+  ],
+  shoeLink7: [
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-17-18_Studio_3_09-17-21_POLICECAR_Pink_0398_AG_JF.jpg',
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-27-18_Studio_3_11-02-57_FLAGSHIP_MultiColor_0781_AG_fd47cb59-0870-4d55-b5b8-8d908f1928b1+(1).jpg',
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-17-18_Studio_3_10-04-56_POLICECAR_Black_0480_AG_JF.jpg',
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/POLICECAR_Black.jpg',
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-27-18_Studio_3_11-02-57_FLAGSHIP_MultiColor_0781_AG_fd47cb59-0870-4d55-b5b8-8d908f1928b1.jpg',
+  ],
+  shoeLink8: [
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-27-18_Studio_3_11-02-57_FLAGSHIP_MultiColor_0781_AG_fd47cb59-0870-4d55-b5b8-8d908f1928b1+(1).jpg',
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-17-18_Studio_3_10-04-56_POLICECAR_Black_0480_AG_JF.jpg',
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-30-18_Studio_4_11-43-17__FLAGSHIP_MultiColor_0139__AG.jpg',
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/POLICECAR_Black.jpg',
+    'https://s3.us-east-2.amazonaws.com/sdc-images-smaller/07-30-18_Studio_4_11-43-17__FLAGSHIP_MultiColor_0139__AG.jpg',
+  ],
   product1: {
     colors: 'Grey, Grey, Grey',
     type: "Men's Running",
