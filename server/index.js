@@ -7,7 +7,6 @@ const compression = require('compression');
 const { redisMiddleware } = require('./redisMiddleware');
 const queries = require('../database/queries');
 
-
 /* EXPRESS APP */
 const app = express();
 
@@ -57,14 +56,14 @@ app.delete('/products/:productId', (req, res) => {
     .catch(err => console.log(err));
 });
 
-app.get('/images', (req, res) => {
+app.get('/images', redisMiddleware, (req, res) => {
   const { image_id } = req.query;
   queries.getAllImagesById(image_id)
     .then(data => res.json(data.links.split('***')))
     .catch(err => console.log(err));
 });
 
-app.get('/images/:imageId', (req, res) => {
+app.get('/images/:imageId', redisMiddleware, (req, res) => {
   const { imageId } = req.params;
   queries.getAllImagesById(imageId)
     .then(data => res.json(data.links.split('***')))

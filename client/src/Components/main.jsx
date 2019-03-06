@@ -85,11 +85,3 @@ class Main extends React.Component {
 }
 
 export default Main;
-
-
-
-/* IDEAS:
-
-redo queries so that one GET returns a product and its images, instead of
-GET product -> GET image -> GET related images
-*/
