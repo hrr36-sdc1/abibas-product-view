@@ -17,25 +17,15 @@ app.use(express.json());
 app.get('/products', redisMiddleware, (req, res) => {
   const { model } = req.query;
   queries.getAllShoesByModel(model)
-    .then((data) => {
-      if (data.length === 0) {
-        res.sendStatus(204);
-      } else {
-        res.json(data);
-      }
-    });
+    .then(data => res.json(data))
+    .catch(err => console.log(err));
 });
 
 app.get('/products/:productId', redisMiddleware, (req, res) => {
   const { productId } = req.params;
   queries.getSingleShoeByIdWithRelatedImages(productId)
-    .then((data) => {
-      if (data.length === 0) {
-        res.sendStatus(204);
-      } else {
-        res.json(data);
-      }
-    });
+    .then(data => res.json(data))
+    .catch(err => console.log(err));
 });
 
 app.post('/products', (req, res) => {
