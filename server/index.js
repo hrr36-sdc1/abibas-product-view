@@ -56,7 +56,7 @@ app.get('/images', redisMiddleware, (req, res) => {
 app.get('/images/:imageId', redisMiddleware, (req, res) => {
   const { imageId } = req.params;
   queries.getAllImagesById(imageId)
-    .then(data => res.json(data.links.split('***')))
+    .then(data => res.json(data.links))
     .catch(err => console.log(err));
 });
 
