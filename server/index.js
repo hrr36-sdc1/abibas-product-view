@@ -3,10 +3,11 @@
 
 const express = require('express');
 const compression = require('compression');
+const cors = require('cors');
 const path = require('path');
+
 const { redisMiddleware } = require('./redisMiddleware');
 const queries = require('../database/queries');
-const cors = require('cors');
 
 const app = express();
 
