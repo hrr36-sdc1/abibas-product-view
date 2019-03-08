@@ -31,4 +31,4 @@ dist/
 .env
 *.csv
 newrelic.js
-dump.rdb
+*.rdb

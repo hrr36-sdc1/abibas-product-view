@@ -3,15 +3,14 @@
 
 const express = require('express');
 const compression = require('compression');
-
+const path = require('path');
 const { redisMiddleware } = require('./redisMiddleware');
 const queries = require('../database/queries');
 
-/* EXPRESS APP */
 const app = express();
 
 app.use(compression());
-app.use(express.static(`${__dirname}/../public`));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 
 app.get('/products', redisMiddleware, (req, res) => {
