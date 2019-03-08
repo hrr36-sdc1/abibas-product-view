@@ -32,12 +32,14 @@ From within the root directory:
 ```sh
 npm install
 ```
+
 ## Deployment
 
-To deploy build image, run a container, and seed the psql db:
-```sh
-docker build . -t latest -f docker/Dockerfile.pg
-docker run -v pgdata:/var/lib/postgresql/data -d baile320/db:latest -c random_page_cost=1 -c work_mem='16MB'
-docker exec -d container_name sh ./database/db_conf.sh
-docker exec -d container_name sh ./database/utils/sdc_seed.sh
-```
+### create image & run docker container
+docker-compose -f docker/docker-compose.yml up
+
+### creates tables in postgres inside docker container
+psql -U postgres -h localhost -p 5432 -d products < database/migration.sql
+
+#### seed database
+./database/utils/sdc_seed.sh

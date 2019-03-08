@@ -16,8 +16,8 @@ done
 # load data files into postgres and cassandra
 for i in `seq 1 $numseeds`;
 do
-  psql -U postgres -d products -c "\copy shoes(colors, type, model, sizes, price, image_id, review_count, avg_stars) from ./database/utils/seeds/productfile.csv delimiter ',' csv header;"
-  psql -U postgres -d products -c "\copy images(links) from ./database/utils/seeds/imagefile.csv delimiter ',' csv header;"
+  PGPASSWORD=postgres psql -U postgres -h localhost -p 5432 -d products -c "\copy shoes(colors, type, model, sizes, price, image_id, review_count, avg_stars) from ./database/utils/seeds/productfile.csv delimiter ',' csv header;"
+  PGPASSWORD=postgres psql -U postgres -h localhost -p 5432 -d products -c "\copy images(links) from ./database/utils/seeds/imagefile.csv delimiter ',' csv header;"
  echo seed $i loaded
 done
 
