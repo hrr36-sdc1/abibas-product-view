@@ -6,7 +6,7 @@ const compression = require('compression');
 const cors = require('cors');
 const path = require('path');
 
-const { redisMiddleware } = require('./redisMiddleware');
+//const { redisMiddleware } = require('./redisMiddleware');
 const queries = require('../database/queries');
 
 const app = express();
@@ -16,14 +16,14 @@ app.use(compression());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 
-app.get('/products', redisMiddleware, (req, res) => {
+app.get('/products', (req, res) => {
   const { model } = req.query;
   queries.getAllShoesByModel(model)
     .then(data => res.json(data))
     .catch(err => console.log(err));
 });
 
-app.get('/products/:productId', redisMiddleware, (req, res) => {
+app.get('/products/:productId', (req, res) => {
   const { productId } = req.params;
   queries.getSingleShoeByIdWithRelatedImages(productId)
     .then(data => res.json(data))
@@ -48,14 +48,14 @@ app.delete('/products/:productId', (req, res) => {
     .catch(err => console.log(err));
 });
 
-app.get('/images', redisMiddleware, (req, res) => {
+app.get('/images', (req, res) => {
   const { image_id } = req.query;
   queries.getAllImagesById(image_id)
     .then(data => res.json(data.links.split('***')))
     .catch(err => console.log(err));
 });
 
-app.get('/images/:imageId', redisMiddleware, (req, res) => {
+app.get('/images/:imageId', (req, res) => {
   const { imageId } = req.params;
   queries.getAllImagesById(imageId)
     .then(data => res.json(data.links))
