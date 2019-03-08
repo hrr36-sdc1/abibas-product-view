@@ -26,10 +26,7 @@ app.get('/products', (req, res) => {
 app.get('/products/:productId', (req, res) => {
   const { productId } = req.params;
   queries.getSingleShoeByIdWithRelatedImages(productId)
-    .then(data => {
-      console.log(data);
-      res.json(JSON.stringify(data))
-    })
+    .then(data => res.json(JSON.stringify(data)))
     .catch(err => console.log(err));
 });
 
