@@ -3,10 +3,55 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 let path = require('path');
-let SRC_DIR = path.join(__dirname, '/client/src');
-let DIST_DIR = path.join(__dirname, '/public');
+//let SRC_DIR = path.join(__dirname, '/client/src');
+//let DIST_DIR = path.join(__dirname, '/public');
 
-module.exports = {
+const common = {
+  context: __dirname + '/client',
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ["@babel/preset-react", "@babel/preset-env"]
+        },
+        resolve: {
+          extensions: ['.js', '.jsx'],
+        }
+      },
+    ],
+  }
+};
+const client = {
+  entry: './client.js',
+  output: {
+    path: __dirname + '/public',
+    filename: 'app.js'
+  }
+};
+const server = {
+  entry: './server.js',
+  target: 'node',
+  output: {
+    path: __dirname + '/public',
+    filename: 'app-server.js',
+    libraryTarget: 'commonjs-module'
+  }
+};
+
+module.exports = [
+  Object.assign({}, common, client),
+  Object.assign({}, common, server)
+];
+
+/*module.exports = {
+  entry: `${SRC_DIR}/index.jsx`,
+  output: {
+    filename: 'bundle.js',
+    path: DIST_DIR
+  },
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
@@ -23,11 +68,6 @@ module.exports = {
       chunkFilename: "[id].css"
     })
   ],
-  entry: `${SRC_DIR}/index.jsx`,
-  output: {
-    filename: 'bundle.js',
-    path: DIST_DIR
-  },
   module: {
     rules: [
       {
@@ -54,3 +94,4 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   }
 };
+*/
