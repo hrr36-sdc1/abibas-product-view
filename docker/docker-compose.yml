@@ -1,6 +1,13 @@
 # docker-compose.yml
 version: "3"
 services:
+  redis:
+    image: redis
+    container_name: cache
+    ports:
+      - "6379:6379"
+    expose:
+      - 6379
   app:
     build:
       context: ../
@@ -9,6 +16,9 @@ services:
         port: 8002
     depends_on:
       - db
+      - redis
+    environment:
+      - REDIS_URL=redis://cache
     ports:
       - "8002:8002"
     environment:

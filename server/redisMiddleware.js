@@ -1,7 +1,6 @@
-const redis = require('redis');
+const Redis = require('ioredis');
 
-/* REDIS MIDDLEWARE */
-const client = redis.createClient();
+const client = new Redis(6379, 'redis');
 
 const redisMiddleware = (req, res, next) => {
   const key = `__express__${req.originalUrl}` || req.url;
