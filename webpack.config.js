@@ -1,6 +1,7 @@
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 let path = require('path');
 //let SRC_DIR = path.join(__dirname, '/client/src');
@@ -29,7 +30,24 @@ const client = {
   output: {
     path: __dirname + '/public',
     filename: 'app.js'
-  }
+  },
+  plugins: [
+    new CompressionPlugin({
+      filename: '[path].gz[query]',
+      algorithm: "gzip",
+      test: /\.js$|\.css$|\.html$/,
+    })
+  ],
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ]
+  },
 };
 const server = {
   entry: './server.js',
