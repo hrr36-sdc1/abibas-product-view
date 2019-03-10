@@ -45,9 +45,9 @@ class Main extends React.Component {
 
   getProduct() {
     axios.all([
-      axios.get(`/products/${11562701}`),
-      axios.get(`/products/${11214058}`),
-      axios.get(`/products/${10857618}`),
+      axios.get(`/products/${9999999}`),
+      axios.get(`/products/${10000000}`),
+      axios.get(`/products/${9999998}`),
     ])
       .then((res) => {
         const products = res.map(response => JSON.parse(response.data));

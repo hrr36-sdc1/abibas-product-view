@@ -1,3 +1,5 @@
+CREATE DATABASE products;
+
 \c products
 
 CREATE TABLE SHOES(
