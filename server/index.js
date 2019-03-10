@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable camelcase */
-
+const newrelic = require('newrelic');
 const express = require('express');
 const compression = require('compression');
 const bodyParser = require('body-parser');
