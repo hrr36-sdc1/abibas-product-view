@@ -39,7 +39,7 @@ npm install
 docker-compose -f docker/docker-compose.yml up
 
 ### creates tables in postgres inside docker container
-docker exec -d __containername__ psql -U postgres -h localhost -p 5432 -d products -c "CREATE DATABASE products"
+docker exec -d __containername__ psql -U postgres -h localhost -p 5432 -c "CREATE DATABASE products"
 psql -U postgres -h localhost -p 5432 -d products < database/migration.sql
 
 #### seed database
