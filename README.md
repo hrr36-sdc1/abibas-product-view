@@ -25,14 +25,14 @@ PUT / DELETE
 ## Deployment & Running the App
 
 ### create image & run docker container
-docker-compose -f docker/docker-compose.yml up
+```docker-compose -f docker/docker-compose.yml up```
 
 ### creates tables in postgres inside docker container
-docker exec -d __containername__ psql -U postgres -h localhost -p 5432 -c "CREATE DATABASE products"
-psql -U postgres -h localhost -p 5432 -d products < database/migration.sql
+```docker exec -d __containername__ psql -U postgres -h localhost -p 5432 -c "CREATE DATABASE products"```
+```psql -U postgres -h localhost -p 5432 -d products < database/migration.sql```
 
 #### seed database
-./database/utils/sdc_seed.sh
+```./database/utils/sdc_seed.sh```
 
 ## In Action
 ![A gif example of the app in action](https://i.imgur.com/alouO4z.gif)
